@@ -106,8 +106,8 @@ public class ExamplesView {
 		frame.getContentPane().add(mainPanel);
 		mainPanel.setLayout(null);
 		
-		JLabel lblName = new JLabel(page.getName());
-		lblName.setBounds(30, 20, 182, 83);
+		JLabel lblName = new JLabel(page.getName() + ": Examples");
+		lblName.setBounds(30, 20, 369, 83);
 		mainPanel.add(lblName);
 		lblName.setFont(new Font("Gotham Light", Font.PLAIN, 32));
 		
@@ -125,12 +125,13 @@ public class ExamplesView {
 			if(i <= (pageNum * 7) - 1){
 				// Can only fit 7 items at once, so don't place any more than that
 				exampleCommands[i] = new JLabel(entry.getKey());
-				exampleCommands[i].setBounds(30, 90 + 60*i, 300, 20);
+				exampleCommands[i].setBounds(30, 90 + 90*i, 300, 20);
 				exampleCommands[i].setFont(new Font("Gotham Light", Font.PLAIN, 18));
 				
 				exampleMeanings[i] = new JLabel("<html>" + entry.getValue() + "</html>");
-				exampleMeanings[i].setBounds(50, 110 + 60*i, 450, 45);
-				exampleCommands[i].setFont(new Font("Gotham Light", Font.PLAIN, 15));
+				exampleMeanings[i].setBounds(50, 100 + 90*i, 450, 70);
+				exampleMeanings[i].setFont(new Font("Helvetica", Font.PLAIN, 15));
+				exampleMeanings[i].setAlignmentX(JLabel.TOP);
 				
 				mainPanel.add(exampleCommands[i]);
 				mainPanel.add(exampleMeanings[i]);

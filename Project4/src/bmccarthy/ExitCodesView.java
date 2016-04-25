@@ -106,8 +106,8 @@ public class ExitCodesView {
 		frame.getContentPane().add(mainPanel);
 		mainPanel.setLayout(null);
 		
-		JLabel lblName = new JLabel(page.getName());
-		lblName.setBounds(30, 20, 182, 83);
+		JLabel lblName = new JLabel(page.getName() + ": Exit Codes");
+		lblName.setBounds(30, 20, 420, 83);
 		mainPanel.add(lblName);
 		lblName.setFont(new Font("Gotham Light", Font.PLAIN, 32));
 		
