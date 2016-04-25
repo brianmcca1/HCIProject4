@@ -112,6 +112,13 @@ public class FlagsView {
 		i = (1 - pageNum) * 7; // 7 per page, so start wherever left off (or at 0 on page 1)
 		JLabel flagNames[] = new JLabel[page.getFlags().size()];
 		JLabel flagDescriptions[] = new JLabel[page.getFlags().size()];
+		
+		//TODO: REFACTOR THIS!!
+		// Only works on 1 page, because the iteration doesn't know it's moving pages
+		// Convert to an array and then iterate in a standard for loop?
+		// Maybe even sort it and pass a starting point? Might be too much though
+		// OR: Just abandon this entirely. Not worth the time? Maybe put a pin in it for now?
+		
 		for(Map.Entry<String, String> entry: page.getFlags().entrySet()){
 			if(i <= (pageNum * 7) - 1){
 				// Can only fit 7 items at once, so don't place any more than that
@@ -142,7 +149,7 @@ public class FlagsView {
 				nextPageLabel.setFont(new Font("Gotham Light", Font.PLAIN, 12));
 				nextPageLabel.setForeground(Color.BLUE);
 				nextPageLabel.setBounds(275, 495, 75, 60);
-				nextPageLabel.addMouseListener(new NextMouseAdapter(page, pages, pageNum));
+				//nextPageLabel.addMouseListener(new NextMouseAdapter(page, pages, pageNum));
 				mainPanel.add(nextPageLabel);
 			}
 			

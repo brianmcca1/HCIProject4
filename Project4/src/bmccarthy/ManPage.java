@@ -8,12 +8,14 @@ public class ManPage {
 	String synopsis;
 	String description;
 	HashMap<String, String> flagNamesToDescriptions;
+	String author;
 	
-	public ManPage(String name, String synopsis, String description, HashMap<String, String> flagNamesToDescriptions){
+	public ManPage(String name, String synopsis, String description, HashMap<String, String> flagNamesToDescriptions, String author){
 		this.name = name;
 		this.synopsis = synopsis;
 		this.description = description;
 		this.flagNamesToDescriptions = flagNamesToDescriptions;
+		this.author = author;
 	}
 	
 	public String getName(){
@@ -29,5 +31,9 @@ public class ManPage {
 	}
 	public HashMap<String, String> getFlags(){
 		return this.flagNamesToDescriptions;
+	}
+	
+	public String getAuthor(){
+		return this.author;
 	}
 }

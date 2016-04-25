@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-
 public class XMLParser {
 	
 	public HashMap<String, ManPage> parseXML() throws ParserConfigurationException, SAXException, IOException{
@@ -29,6 +28,8 @@ public class XMLParser {
 				ManPage thePage;
 				Node page = pageList.item(i);
 				HashMap<String, String> flagMap = new HashMap<String, String>();
+				HashMap<String, String> exampleMap = new HashMap<String, String>();
+				HashMap<String, String> exitMap = new HashMap<String, String>();
 				
 				if(page.getNodeType() == Node.ELEMENT_NODE){
 					Element element = (Element) page;
@@ -37,13 +38,7 @@ public class XMLParser {
 					String pageSynopsis = element.getElementsByTagName("synopsis").item(0).getTextContent();
 					String pageDescription = element.getElementsByTagName("description").item(0).getTextContent();
 					
-					
-//					System.out.println("Name: " + element.getElementsByTagName("name").item(0).getTextContent());
-//					System.out.println("Synopsis: " + element.getElementsByTagName("synopsis").item(0).getTextContent());
-//					System.out.println("Description: "  + element.getElementsByTagName("description").item(0).getTextContent());
-					
-					NodeList flagList = doc.getElementsByTagName("flag");
-					
+					NodeList flagList = doc.getElementsByTagName("flag");					
 					
 					for(int j = 0; j < flagList.getLength(); j++){
 						Node flag = flagList.item(j);
@@ -54,25 +49,63 @@ public class XMLParser {
 							Element parentPageElement = (Element) flagElement.getParentNode().getParentNode();
 							
 							String parentPageName = parentPageElement.getAttribute("pagename");
-							
-							
-							//System.out.println("parentPageName is " + parentPageName);
-							//System.out.println("pageName is " + pageName);
-							
+						
 							if(parentPageName.equals(pageName)){
 								String flagName = flagElement.getElementsByTagName("flagname").item(0).getTextContent();
 								String flagDescription = flagElement.getElementsByTagName("flagdescription").item(0).getTextContent();
 								
 								flagMap.put(flagName, flagDescription);
-//								System.out.println("Flag name: " + flagElement.getElementsByTagName("flagname").item(0).getTextContent());
-//								System.out.println("Flag description: " + flagElement.getElementsByTagName("flagdescription").item(0).getTextContent());
 							}
 						}
 					}
+					NodeList exitList = doc.getElementsByTagName("exitStatus");
 					
-					thePage = new ManPage(pageName, pageSynopsis, pageDescription, flagMap);
+					for(int j = 0; j < exitList.getLength(); j++){
+						Node exitStatus = exitList.item(j);
+						
+						if(exitStatus.getNodeType() == Node.ELEMENT_NODE){
+							Element exitElement = (Element) exitStatus;
+							
+							Element parentPageElement = (Element) exitElement.getParentNode().getParentNode();
+							
+							String parentPageName = parentPageElement.getAttribute("pagename");
+							
+							
+							if(parentPageName.equals(pageName)){
+								String exitValue = exitElement.getElementsByTagName("value").item(0).getTextContent();
+								String exitMeaning = exitElement.getElementsByTagName("meaning").item(0).getTextContent();
+								
+								exitMap.put(exitValue, exitMeaning);
+
+							}
+						}
+					}
+					NodeList exampleList = doc.getElementsByTagName("example");
+							
+					for(int j = 0; j < exampleList.getLength(); j++){
+						Node example = exampleList.item(j);
+						
+						if(example.getNodeType() == Node.ELEMENT_NODE){
+							Element exampleElement = (Element) example;
+							
+							Element parentPageElement = (Element) exampleElement.getParentNode().getParentNode();
+							
+							String parentPageName = parentPageElement.getAttribute("pagename");
+							
+							
+							if(parentPageName.equals(pageName)){
+								String exampleCommand = exampleElement.getElementsByTagName("examplecommand").item(0).getTextContent();
+								String exampleMeaning = exampleElement.getElementsByTagName("examplemeaning").item(0).getTextContent();
+								
+								exampleMap.put(exampleCommand, exampleMeaning);
+
+							}
+						}
+					}
+					String author = element.getElementsByTagName("author").item(0).getTextContent();
+					thePage = new ManPage(pageName, pageSynopsis, pageDescription, flagMap, author);
 					pages.put(pageName, thePage);
-					//System.out.println("---------------------");
+
 				}
 				
 			}

@@ -125,6 +125,11 @@ public class PageView {
 		flagsLink.addMouseListener(new FlagsMouseAdapter(page, pages));
 		mainPanel.add(flagsLink);
 		
+		JLabel author = new JLabel("<html>" + page.getAuthor() + "</html>");
+		author.setFont(new Font("Helvetica", Font.PLAIN, 15));
+		author.setBounds(30, 507, 459, 43);
+		mainPanel.add(author);
+		
 		
 		
 //		EventQueue.invokeLater(new Runnable() {
