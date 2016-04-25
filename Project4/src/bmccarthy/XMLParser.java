@@ -58,7 +58,7 @@ public class XMLParser {
 							}
 						}
 					}
-					NodeList exitList = doc.getElementsByTagName("exitStatus");
+					NodeList exitList = doc.getElementsByTagName("status");
 					
 					for(int j = 0; j < exitList.getLength(); j++){
 						Node exitStatus = exitList.item(j);
@@ -103,7 +103,7 @@ public class XMLParser {
 						}
 					}
 					String author = element.getElementsByTagName("author").item(0).getTextContent();
-					thePage = new ManPage(pageName, pageSynopsis, pageDescription, flagMap, author);
+					thePage = new ManPage(pageName, pageSynopsis, pageDescription, flagMap, author, exitMap, exampleMap);
 					pages.put(pageName, thePage);
 
 				}

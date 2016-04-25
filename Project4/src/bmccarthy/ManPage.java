@@ -9,13 +9,16 @@ public class ManPage {
 	String description;
 	HashMap<String, String> flagNamesToDescriptions;
 	String author;
-	
-	public ManPage(String name, String synopsis, String description, HashMap<String, String> flagNamesToDescriptions, String author){
+	HashMap<String, String> exitCodes;
+	HashMap<String, String> examples;
+	public ManPage(String name, String synopsis, String description, HashMap<String, String> flagNamesToDescriptions, String author, HashMap<String, String> exitCodes, HashMap<String, String> examples){
 		this.name = name;
 		this.synopsis = synopsis;
 		this.description = description;
 		this.flagNamesToDescriptions = flagNamesToDescriptions;
 		this.author = author;
+		this.exitCodes = exitCodes;
+		this.examples = examples;
 	}
 	
 	public String getName(){
@@ -35,5 +38,13 @@ public class ManPage {
 	
 	public String getAuthor(){
 		return this.author;
+	}
+	
+	public HashMap<String, String> getExitCodes(){
+		return this.exitCodes;
+	}
+	
+	public HashMap<String, String> getExamples(){
+		return this.examples;
 	}
 }

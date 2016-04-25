@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -86,6 +87,8 @@ public class PageView {
 				attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
 				pageShortcuts[i].setFont(font.deriveFont(attributes));
 				pageShortcuts[i].addMouseListener(new IndexMouseAdapter(entry.getValue(), pages));
+				pageShortcuts[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
+				
 				// TODO: links to other pages, based on the name
 			}
 			index.add(pageShortcuts[i]);
@@ -109,26 +112,43 @@ public class PageView {
 		
 		JLabel synopsis = new JLabel(page.getSynopsis());
 		synopsis.setFont(new Font("Gotham Light", Font.PLAIN, 20));
-		synopsis.setBounds(30, 104, 429, 67);
+		synopsis.setBounds(30, 84, 429, 67);
 		mainPanel.add(synopsis);
 		
 		JLabel description = new JLabel("<html>" + page.getDescription() + "</html>");
 		description.setVerticalAlignment(SwingConstants.TOP);
 		description.setFont(new Font("Helvetica", Font.PLAIN, 18));
-		description.setBounds(30, 182, 429, 193);
+		description.setBounds(30, 142, 429, 109);
 		mainPanel.add(description);
 		
 		JLabel flagsLink = new JLabel("<html><u>FLAGS</u></html>");
 		flagsLink.setFont(new Font("Gotham Light", Font.BOLD, 20));
 		flagsLink.setForeground(Color.BLUE);
-		flagsLink.setBounds(30, 333, 194, 59);
+		flagsLink.setBounds(30, 240, 83, 49);
 		flagsLink.addMouseListener(new FlagsMouseAdapter(page, pages));
+		flagsLink.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		mainPanel.add(flagsLink);
 		
 		JLabel author = new JLabel("<html>" + page.getAuthor() + "</html>");
 		author.setFont(new Font("Helvetica", Font.PLAIN, 15));
 		author.setBounds(30, 507, 459, 43);
 		mainPanel.add(author);
+		
+		JLabel exitCodesLink = new JLabel("<html><u>EXIT CODES</u></html>");
+		exitCodesLink.setForeground(Color.BLUE);
+		exitCodesLink.setFont(new Font("Gotham Light", Font.BOLD, 20));
+		exitCodesLink.setBounds(30, 307, 135, 49);
+		exitCodesLink.addMouseListener(new ExitCodesMouseAdapter(page, pages));
+		exitCodesLink.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		mainPanel.add(exitCodesLink);
+		
+		JLabel examplesLink = new JLabel("<html><u>EXAMPLES</u></html>");
+		examplesLink.setForeground(Color.BLUE);
+		examplesLink.setFont(new Font("Gotham Light", Font.BOLD, 20));
+		examplesLink.setBounds(30, 384, 135, 49);
+		examplesLink.addMouseListener(new ExamplesMouseAdapter(page, pages));
+		examplesLink.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		mainPanel.add(examplesLink);
 		
 		
 		

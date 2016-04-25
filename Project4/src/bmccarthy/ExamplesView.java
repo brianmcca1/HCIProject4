@@ -20,7 +20,7 @@ import java.util.Map;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-public class FlagsView {
+public class ExamplesView {
 
 	private JFrame frame;
 	
@@ -39,7 +39,7 @@ public class FlagsView {
 	/**
 	 * Create the application.
 	 */
-	public FlagsView(ManPage page, HashMap<String, ManPage> pages, int pageNum) {
+	public ExamplesView(ManPage page, HashMap<String, ManPage> pages, int pageNum) {
 		this.page = page;
 		this.pages = pages;
 		this.pageNum = pageNum;
@@ -112,8 +112,8 @@ public class FlagsView {
 		lblName.setFont(new Font("Gotham Light", Font.PLAIN, 32));
 		
 		i = (1 - pageNum) * 7; // 7 per page, so start wherever left off (or at 0 on page 1)
-		JLabel flagNames[] = new JLabel[page.getFlags().size()];
-		JLabel flagDescriptions[] = new JLabel[page.getFlags().size()];
+		JLabel exampleCommands[] = new JLabel[page.getExamples().size()];
+		JLabel exampleMeanings[] = new JLabel[page.getExamples().size()];
 		
 		//TODO: REFACTOR THIS!!
 		// Only works on 1 page, because the iteration doesn't know it's moving pages
@@ -121,31 +121,31 @@ public class FlagsView {
 		// Maybe even sort it and pass a starting point? Might be too much though
 		// OR: Just abandon this entirely. Not worth the time? Maybe put a pin in it for now?
 		
-		for(Map.Entry<String, String> entry: page.getFlags().entrySet()){
+		for(Map.Entry<String, String> entry: page.getExamples().entrySet()){
 			if(i <= (pageNum * 7) - 1){
 				// Can only fit 7 items at once, so don't place any more than that
-				flagNames[i] = new JLabel(entry.getKey());
-				flagNames[i].setBounds(30, 90 + 60*i, 300, 20);
-				flagNames[i].setFont(new Font("Gotham Light", Font.PLAIN, 18));
+				exampleCommands[i] = new JLabel(entry.getKey());
+				exampleCommands[i].setBounds(30, 90 + 60*i, 300, 20);
+				exampleCommands[i].setFont(new Font("Gotham Light", Font.PLAIN, 18));
 				
-				flagDescriptions[i] = new JLabel("<html>" + entry.getValue() + "</html>");
-				flagDescriptions[i].setBounds(50, 110 + 60*i, 450, 45);
-				flagNames[i].setFont(new Font("Gotham Light", Font.PLAIN, 15));
+				exampleMeanings[i] = new JLabel("<html>" + entry.getValue() + "</html>");
+				exampleMeanings[i].setBounds(50, 110 + 60*i, 450, 45);
+				exampleCommands[i].setFont(new Font("Gotham Light", Font.PLAIN, 15));
 				
-				mainPanel.add(flagNames[i]);
-				mainPanel.add(flagDescriptions[i]);
+				mainPanel.add(exampleCommands[i]);
+				mainPanel.add(exampleMeanings[i]);
 				i++;
 			} 
 		}
 		
-		if(page.getFlags().size() > 6){
+		if(page.getExitCodes().size() > 6){
 			// Requires a second page, so put in a "Next" and/or "Prev" button and page tracker
 			JLabel pageNumLabel = new JLabel("Page " + pageNum);
 			pageNumLabel.setFont(new Font("Gotham Light", Font.PLAIN, 12));
 			pageNumLabel.setBounds(200, 495, 75, 60);
 			mainPanel.add(pageNumLabel);
 			
-			if(pageNum < (page.getFlags().size() / 6)){
+			if(pageNum < (page.getExamples().size() / 6)){
 				// We need a "Next" button unless this is the last page
 				JLabel nextPageLabel = new JLabel("<html><u>NEXT</html></u>");
 				nextPageLabel.setFont(new Font("Gotham Light", Font.PLAIN, 12));
