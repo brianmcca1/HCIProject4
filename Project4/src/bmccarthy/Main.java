@@ -16,8 +16,8 @@ public class Main {
 		HashMap<String, ManPage> manPages = new HashMap<String, ManPage>();
 		manPages = parser.parseXML();
 		
-		PageView page = new PageView(manPages.get("ls"), manPages);
-		page.launch();
+		HomeView home = new HomeView(manPages);
+		home.launch();
 		
 	}
 }

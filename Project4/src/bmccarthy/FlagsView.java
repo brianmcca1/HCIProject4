@@ -88,7 +88,7 @@ public class FlagsView {
 				Map attributes = font.getAttributes();
 				attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
 				pageShortcuts[i].setFont(font.deriveFont(attributes));
-				pageShortcuts[i].addMouseListener(new IndexMouseAdapter(entry.getValue(), pages));
+				pageShortcuts[i].addMouseListener(new IndexMouseAdapter(entry.getValue(), pages, frame));
 				pageShortcuts[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
 				// TODO: links to other pages, based on the name
 			}
@@ -172,7 +172,7 @@ public class FlagsView {
 		backLink.setFont(new Font("Gotham Light", Font.BOLD, 20));
 		backLink.setForeground(Color.BLUE);
 		backLink.setBounds(375, 495, 75, 59);
-		backLink.addMouseListener(new BackMouseAdapter(page, pages));
+		backLink.addMouseListener(new BackMouseAdapter(page, pages, frame));
 		backLink.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		mainPanel.add(backLink);
 		

@@ -68,13 +68,21 @@ public class PageView {
 		index.add(indexTitle);
 		
 		// Create the index with all names in the man page
+		JLabel homeLink = new JLabel("<html><u>Home</u></html>");
+		homeLink.setFont(new Font("Gotham Light", Font.PLAIN, 18));
+		homeLink.setForeground(Color.BLUE);
+		homeLink.setBounds(45, 100, 80, 30);
+		homeLink.addMouseListener(new HomeMouseAdapter(pages, frame));
+		homeLink.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		index.add(homeLink);
+		
 		JLabel pageShortcuts[] = new JLabel[pages.size()];
 		int i = 0;
 		for(Map.Entry<String, ManPage> entry: pages.entrySet()){
 			pageShortcuts[i] = new JLabel(entry.getKey());
 			
 			pageShortcuts[i].setFont(new Font("Gotham Light", Font.PLAIN, 18));
-			pageShortcuts[i].setBounds(45, 100 + 50 * i, 80, 30);
+			pageShortcuts[i].setBounds(45, 150 + 50 * i, 80, 30);
 			if(page.getName() == entry.getKey()){
 				// This is the page we're currently on, so indicate that
 				pageShortcuts[i].setForeground(Color.BLACK);
@@ -86,7 +94,7 @@ public class PageView {
 				Map attributes = font.getAttributes();
 				attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
 				pageShortcuts[i].setFont(font.deriveFont(attributes));
-				pageShortcuts[i].addMouseListener(new IndexMouseAdapter(entry.getValue(), pages));
+				pageShortcuts[i].addMouseListener(new IndexMouseAdapter(entry.getValue(), pages, frame));
 				pageShortcuts[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
 				
 				// TODO: links to other pages, based on the name
@@ -125,7 +133,7 @@ public class PageView {
 		flagsLink.setFont(new Font("Gotham Light", Font.BOLD, 20));
 		flagsLink.setForeground(Color.BLUE);
 		flagsLink.setBounds(30, 240, 83, 49);
-		flagsLink.addMouseListener(new FlagsMouseAdapter(page, pages));
+		flagsLink.addMouseListener(new FlagsMouseAdapter(page, pages, frame));
 		flagsLink.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		mainPanel.add(flagsLink);
 		
@@ -138,7 +146,7 @@ public class PageView {
 		exitCodesLink.setForeground(Color.BLUE);
 		exitCodesLink.setFont(new Font("Gotham Light", Font.BOLD, 20));
 		exitCodesLink.setBounds(30, 307, 135, 49);
-		exitCodesLink.addMouseListener(new ExitCodesMouseAdapter(page, pages));
+		exitCodesLink.addMouseListener(new ExitCodesMouseAdapter(page, pages, frame));
 		exitCodesLink.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		mainPanel.add(exitCodesLink);
 		
@@ -146,7 +154,7 @@ public class PageView {
 		examplesLink.setForeground(Color.BLUE);
 		examplesLink.setFont(new Font("Gotham Light", Font.BOLD, 20));
 		examplesLink.setBounds(30, 384, 135, 49);
-		examplesLink.addMouseListener(new ExamplesMouseAdapter(page, pages));
+		examplesLink.addMouseListener(new ExamplesMouseAdapter(page, pages, frame));
 		examplesLink.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		mainPanel.add(examplesLink);
 		

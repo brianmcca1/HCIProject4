@@ -88,7 +88,7 @@ public class ExitCodesView {
 				Map attributes = font.getAttributes();
 				attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
 				pageShortcuts[i].setFont(font.deriveFont(attributes));
-				pageShortcuts[i].addMouseListener(new IndexMouseAdapter(entry.getValue(), pages));
+				pageShortcuts[i].addMouseListener(new IndexMouseAdapter(entry.getValue(), pages, frame));
 				pageShortcuts[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
 				// TODO: links to other pages, based on the name
 			}
@@ -125,7 +125,7 @@ public class ExitCodesView {
 		for(Map.Entry<String, String> entry: page.getExitCodes().entrySet()){
 			if(i <= (pageNum * 7) - 1){
 				// Can only fit 7 items at once, so don't place any more than that
-				exitValues[i] = new JLabel(entry.getKey());
+				exitValues[i] = new JLabel(entry.getKey() + ":");
 				exitValues[i].setBounds(30, 90 + 60*i, 300, 20);
 				exitValues[i].setFont(new Font("Gotham Light", Font.PLAIN, 18));
 				
@@ -173,7 +173,7 @@ public class ExitCodesView {
 		backLink.setFont(new Font("Gotham Light", Font.BOLD, 20));
 		backLink.setForeground(Color.BLUE);
 		backLink.setBounds(375, 495, 75, 59);
-		backLink.addMouseListener(new BackMouseAdapter(page, pages));
+		backLink.addMouseListener(new BackMouseAdapter(page, pages, frame));
 		backLink.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		mainPanel.add(backLink);
 		

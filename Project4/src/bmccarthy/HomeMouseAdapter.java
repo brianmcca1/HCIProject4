@@ -6,19 +6,19 @@ import java.util.HashMap;
 
 import javax.swing.JFrame;
 
-public class IndexMouseAdapter extends MouseAdapter{
-	ManPage page;
+public class HomeMouseAdapter extends MouseAdapter{
+	
 	HashMap<String, ManPage> pages;
 	JFrame currentFrame;
 	
-	public IndexMouseAdapter(ManPage page, HashMap<String, ManPage> pages, JFrame currentFrame){
-		this.page = page;
+	public HomeMouseAdapter( HashMap<String, ManPage> pages, JFrame currentFrame){
+		
 		this.pages = pages;
 		this.currentFrame = currentFrame;
 	}
 	public void mouseClicked(MouseEvent e){
-		PageView pageView = new PageView(this.page, this.pages);
+		HomeView homeView = new HomeView(this.pages);
 		currentFrame.setVisible(false);
-		pageView.launch();
+		homeView.launch();
 	}
 }
