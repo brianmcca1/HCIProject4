@@ -16,7 +16,15 @@ public class ManPage {
 		this.flagNamesToDescriptions = flagNamesToDescriptions;
 	}
 	
+	public String getName(){
+		return this.name;
+	}
 	
+	public String getSynopsis(){
+		return this.synopsis;
+	}
 	
-
+	public String getDescription(){
+		return this.description;	
+	}
 }

@@ -13,9 +13,9 @@ import java.util.Map;
 
 public class XMLParser {
 	
-	public ArrayList<ManPage> parseXML() throws ParserConfigurationException, SAXException, IOException{
+	public HashMap<String, ManPage> parseXML() throws ParserConfigurationException, SAXException, IOException{
 		
-		ArrayList<ManPage> pages = new ArrayList<ManPage>();
+		HashMap<String, ManPage> pages = new HashMap<String, ManPage>();
 		try{
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
@@ -71,7 +71,7 @@ public class XMLParser {
 					}
 					
 					thePage = new ManPage(pageName, pageSynopsis, pageDescription, flagMap);
-					pages.add(thePage);
+					pages.put(pageName, thePage);
 					//System.out.println("---------------------");
 				}
 				
