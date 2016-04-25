@@ -133,7 +133,7 @@ public class HomeView {
 			pageLinks[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
 			mainPanel.add(pageLinks[i]);
 			
-			pageDescriptions[i] = new JLabel("<html>" + entry.getValue().getDescription() + "</html>");
+			pageDescriptions[i] = new JLabel("<html>" + entry.getValue().getBrief() + "</html>");
 			pageDescriptions[i].setFont(new Font("Helvetica", Font.PLAIN, 15));
 			pageDescriptions[i].setForeground(Color.BLACK);
 			pageDescriptions[i].setBounds(50, 130 + 80 * i, 400, 50);

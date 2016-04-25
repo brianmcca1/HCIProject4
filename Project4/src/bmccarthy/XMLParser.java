@@ -37,6 +37,7 @@ public class XMLParser {
 					String pageName = element.getElementsByTagName("name").item(0).getTextContent();
 					String pageSynopsis = element.getElementsByTagName("synopsis").item(0).getTextContent();
 					String pageDescription = element.getElementsByTagName("description").item(0).getTextContent();
+					String pageBrief = element.getElementsByTagName("brief").item(0).getTextContent();
 					
 					NodeList flagList = doc.getElementsByTagName("flag");					
 					
@@ -103,7 +104,7 @@ public class XMLParser {
 						}
 					}
 					String author = element.getElementsByTagName("author").item(0).getTextContent();
-					thePage = new ManPage(pageName, pageSynopsis, pageDescription, flagMap, author, exitMap, exampleMap);
+					thePage = new ManPage(pageName, pageSynopsis, pageBrief, pageDescription, flagMap, author, exitMap, exampleMap);
 					pages.put(pageName, thePage);
 
 				}

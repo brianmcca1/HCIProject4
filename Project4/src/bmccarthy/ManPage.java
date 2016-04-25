@@ -6,14 +6,16 @@ import java.util.Map;
 public class ManPage {
 	String name;
 	String synopsis;
+	String brief;
 	String description;
 	HashMap<String, String> flagNamesToDescriptions;
 	String author;
 	HashMap<String, String> exitCodes;
 	HashMap<String, String> examples;
-	public ManPage(String name, String synopsis, String description, HashMap<String, String> flagNamesToDescriptions, String author, HashMap<String, String> exitCodes, HashMap<String, String> examples){
+	public ManPage(String name, String synopsis, String brief, String description, HashMap<String, String> flagNamesToDescriptions, String author, HashMap<String, String> exitCodes, HashMap<String, String> examples){
 		this.name = name;
 		this.synopsis = synopsis;
+		this.brief = brief;
 		this.description = description;
 		this.flagNamesToDescriptions = flagNamesToDescriptions;
 		this.author = author;
@@ -27,6 +29,10 @@ public class ManPage {
 	
 	public String getSynopsis(){
 		return this.synopsis;
+	}
+	
+	public String getBrief(){
+		return this.brief;
 	}
 	
 	public String getDescription(){
