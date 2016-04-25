@@ -113,7 +113,7 @@ public class FlagsView {
 		JLabel flagNames[] = new JLabel[page.getFlags().size()];
 		JLabel flagDescriptions[] = new JLabel[page.getFlags().size()];
 		for(Map.Entry<String, String> entry: page.getFlags().entrySet()){
-			if(i <= pageNum * 7){
+			if(i <= (pageNum * 7) - 1){
 				// Can only fit 7 items at once, so don't place any more than that
 				flagNames[i] = new JLabel(entry.getKey());
 				flagNames[i].setBounds(30, 90 + 60*i, 300, 20);
@@ -130,7 +130,32 @@ public class FlagsView {
 		}
 		
 		if(page.getFlags().size() > 6){
-			// Requires a second page
+			// Requires a second page, so put in a "Next" and/or "Prev" button and page tracker
+			JLabel pageNumLabel = new JLabel("Page " + pageNum);
+			pageNumLabel.setFont(new Font("Gotham Light", Font.PLAIN, 12));
+			pageNumLabel.setBounds(200, 495, 75, 60);
+			mainPanel.add(pageNumLabel);
+			
+			if(pageNum < (page.getFlags().size() / 6)){
+				// We need a "Next" button unless this is the last page
+				JLabel nextPageLabel = new JLabel("<html><u>NEXT</html></u>");
+				nextPageLabel.setFont(new Font("Gotham Light", Font.PLAIN, 12));
+				nextPageLabel.setForeground(Color.BLUE);
+				nextPageLabel.setBounds(275, 495, 75, 60);
+				nextPageLabel.addMouseListener(new NextMouseAdapter(page, pages, pageNum));
+				mainPanel.add(nextPageLabel);
+			}
+			
+			if(pageNum > 1){
+				// Similarly, we need a "Prev" button unless this is the first page
+				JLabel prevPageLabel = new JLabel("<html><u>PREV</html></u>");
+				prevPageLabel.setFont(new Font("Gotham Light", Font.PLAIN, 12));
+				prevPageLabel.setForeground(Color.BLUE);
+				prevPageLabel.setBounds(125, 495, 75, 60);
+				prevPageLabel.addMouseListener(new PrevMouseAdapter(page, pages, pageNum));
+				mainPanel.add(prevPageLabel);
+			}
+			
 		}
 		
 		
@@ -138,20 +163,9 @@ public class FlagsView {
 		backLink.setFont(new Font("Gotham Light", Font.BOLD, 20));
 		backLink.setForeground(Color.BLUE);
 		backLink.setBounds(375, 495, 75, 59);
+		backLink.addMouseListener(new BackMouseAdapter(page, pages));
 		mainPanel.add(backLink);
 		
-		
-		
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					
-//					this.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
 		
 		this.frame.setVisible(true);
 	}
