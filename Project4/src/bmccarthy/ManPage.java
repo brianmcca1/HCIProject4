@@ -27,4 +27,7 @@ public class ManPage {
 	public String getDescription(){
 		return this.description;	
 	}
+	public HashMap<String, String> getFlags(){
+		return this.flagNamesToDescriptions;
+	}
 }
