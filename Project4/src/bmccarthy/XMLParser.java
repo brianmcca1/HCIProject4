@@ -19,7 +19,7 @@ public class XMLParser {
 		try{
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
-			Document doc = db.parse(new File("/Users/Brian/test.xml"));
+			Document doc = db.parse(new File("ManPages.xml"));
 			
 			doc.getDocumentElement().normalize();
 			

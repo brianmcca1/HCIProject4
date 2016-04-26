@@ -158,10 +158,6 @@ public class PageView {
 		examplesLink.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		mainPanel.add(examplesLink);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(285, 202, 46, 14);
-		mainPanel.add(lblNewLabel);
-		
 		
 		
 //		EventQueue.invokeLater(new Runnable() {

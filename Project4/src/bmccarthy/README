@@ -1,0 +1,13 @@
+README.txt
+
+Project 4: Brian McCarthy
+To run this project, run Main.jav as a Java application. From the home page you can navigate to any of the 4 man pages implemented.
+The project is almost completely dynamic; adding any new man pages to the XML should be handled properly by the system.
+
+Moving to the next page in the Flags section, noticeable in the flags of "ls", is not fully implemented due to some 
+issues with the implementation of the ManPage map. However, it should be clear how that would work. The Next button is 
+marked as such
+
+Note: Sometimes clicking on the links to other pages does not result in an immediate response, and sometimes the links require 
+multiple clicks. As far as I can tell, this is a limitation of how Swing implements MouseEvents. If you hold the mouse button down for too long, it
+doesn't recognize that as a "mouseClicked" event. Not sure if there's any way to avoid that. 
