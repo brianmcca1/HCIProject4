@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<catalog>
+	
+	<page pagename = "ls">
+		<name>ls</name>
+		<brief>list directory contents</brief>
+		<synopsis>ls [OPTION]...[FILE]...</synopsis>
+		<description> List information about the FILEs (the current directory by default).
+       Sort entries alphabetically if none of -cftuvSUX nor --sort is
+       specified.</description>
+	   <flags>
+		   <flag> 
+				<flagname>-a</flagname>
+				<flagdescription>do not ignore entries starting with .</flagdescription>	
+		   </flag>
+		   <flag>
+				<flagname>-A</flagname>
+				<flagdescription>do not list implied . and ..</flagdescription>
+			</flag>
+			<flag>
+				<flagname>--author</flagname>
+				<flagdescription>with -l, print the author of each file</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-b</flagname>
+				<flagdescription> print C-style escapes for nongraphic characters</flagdescription>
+			</flag>
+			<flag>
+				<flagname>--block-size=SIZE</flagname>
+				<flagdescription>  scale sizes by SIZE before printing them; e.g.,
+				  '--block-size=M' prints sizes in units of 1,048,576 bytes; see
+				  SIZE format below</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-B</flagname>
+				<flagdescription> do not list implied entries ending with ~</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-c</flagname>
+				<flagdescription>  with -lt: sort by, and show, ctime (time of last modification
+				  of file status information); with -l: show ctime and sort by
+				  name; otherwise: sort by ctime, newest first</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-C</flagname>
+				<flagdescription> list entries by columns</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-d</flagname>
+				<flagdescription> list directories themselves, not their contents</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-f</flagname>
+				<flagdescription> do not sort, enable -aU, disable -ls --color</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-g</flagname>
+				<flagdescription> like -l, but do not list owner</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-h</flagname>
+				<flagdescription> with -l and/or -s, print human readable sizes</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-i</flagname>
+				<flagdescription> print the index number of each file</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-k</flagname>
+				<flagdescription> default to 1024-byte blocks for disk usage</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-l</flagname>
+				<flagdescription> use a long listing format</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-m</flagname>
+				<flagdescription> fill width with a comma separated list of entries</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-n</flagname>
+				<flagdescription> like -l, but list numeric user and group IDs</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-o</flagname>
+				<flagdescription> like -l, but do not list group information</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-p</flagname>
+				<flagdescription> append / indicator to directories</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-q</flagname>
+				<flagdescription> print ? instead of nongraphic characters</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-r</flagname>
+				<flagdescription> reverse order while sorting</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-s</flagname>
+				<flagdescription> print the allocated size of each file, in blocks</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-t</flagname>
+				<flagdescription> sort by modification time, newest first</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-v</flagname>
+				<flagdescription> natural sort of (version) numbers within text</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-x</flagname>
+				<flagdescription> list entries by lines instead of by columns</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-Z</flagname>
+				<flagdescription> print any security context of each file</flagdescription>
+			</flag>
+		</flags>
+		
+		<exitstatuses>
+			<status>
+				<value>0</value>
+				<meaning> OK </meaning>
+			</status>
+			<status>
+				<value>1</value>
+				<meaning> if minor problems (e.g. cannot access subdirectory)</meaning>
+			</status>
+			<status>
+				<value>2</value>
+				<meaning>if serious trouble (e.g., cannot access command-line
+              argument)</meaning>
+		  </status>
+		</exitstatuses>
+		<examples>
+			<example>
+				<examplecommand>$ ls	-l</examplecommand>
+				<examplemeaning>List the contents of the current working directory	in long	format</examplemeaning>
+			</example>
+			<example>
+				<examplecommand>$ ls	-lioF</examplecommand>
+				<examplemeaning>In	addition to listing the	contents of the	current	working	directory in long format, show inode numbers, file flags (see chflags(1)), and suffix each filename with a symbol representing its file type </examplemeaning>
+			</example>
+			<example>
+				<examplecommand>$ ls	-lt /var/log</examplecommand>
+				<examplemeaning>List the files in /var/log, sorting the output such that the mostly recently modified entries are printed first</examplemeaning>
+			</example>
+		</examples>
+		<author>Written by Richard M. Stallman and David MacKenzie</author>
+	</page>
+
+	<page pagename = "mkdir">
+		<name>mkdir</name>
+		<brief>make directories</brief>
+		<synopsis>mkdir [OPTION]...DIRECTORY...</synopsis>
+		<description> Create the DIRECTORY(ies), if they do not already exist.</description>
+		<flags>
+			<flag>
+				<flagname>-m</flagname>
+				<flagdescription>set file mode (as in chmod), not a=rwx</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-p</flagname>
+				<flagdescription>no error if existing, make parent directories as needed</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-v</flagname>
+				<flagdescription>print a message for each created directory</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-Z</flagname>
+				<flagdescription>set SELinux security context of each created directory to the default type</flagdescription>
+			</flag>
+		</flags>
+		<exitstatuses>
+			<status>
+				<value>0</value>
+				<meaning>Success</meaning>
+			</status>
+			<status>
+				<value>>0</value>
+				<meaning>Error occurred</meaning>
+			</status>
+		</exitstatuses>
+		<examples>
+			<example>
+				<examplecommand>$ mkdir foobar</examplecommand>
+				<examplemeaning>Create a directory	named foobar</examplemeaning>
+			</example>
+			<example>
+				<examplecommand>$ mkdir -m 700 foobar</examplecommand>
+				<examplemeaning>Create a directory	named foobar and set its file mode to 700</examplemeaning>
+			</example>
+			<example>
+				<examplecommand>$ mkdir -p cow/horse/monkey</examplecommand>
+				<examplemeaning>Create a directory	named cow/horse/monkey,	creating any non-existent intermediate directories as necessary</examplemeaning>
+			</example>
+		</examples>
+		<author>Written by David MacKenzie</author>
+	</page>
+	
+	<page pagename = "rm">
+		<name>rm</name>
+		<brief>remove directory entries</brief>
+		<synopsis>rm [OPTION]... FILE...</synopsis>
+		<description>rm removes each specified file. By default, it does not remove directories.</description>
+		<flags>
+			<flag>
+				<flagname>-f</flagname>
+				<flagdescription>ignore nonexistent files, never prompt</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-i</flagname>
+				<flagdescription>prompt before every removal</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-l</flagname>
+				<flagdescription>prompt once before removing more than three files, or when removing recursively.</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-r</flagname>
+				<flagdescription>remove directories and their contents recursively</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-v</flagname>
+				<flagdescription>explain what is being done</flagdescription>
+			</flag>
+		</flags>
+		<exitstatuses>
+			<status>
+				<value>0</value>
+				<meaning>All named files were removed</meaning>
+			</status>
+			<status>
+				<value>>0</value>
+				<meaning>Error occurred</meaning>
+			</status>
+		</exitstatuses>
+		<examples>
+			<example>
+				<examplecommand>$ rm	-rf foobar</examplecommand>
+				<examplemeaning>Recursively remove	all files contained within the foobar directory	hierarchy</examplemeaning>
+			</example>
+			<example>
+				<examplecommand>$ rm	./-f</examplecommand>
+				<examplemeaning>Remove the file -f</examplemeaning>
+			</example>
+		</examples>
+		<author>Written by Paul Rubin, David MacKenzie, Richard M. Stallman, and Jim Meyering.</author>
+	</page>
+	
+	<page pagename = "mv">
+		<name>mv</name>
+		<brief>move files</brief>
+		<synopsis>mv [OPTION]... SOURCE... DIRECTORY</synopsis>
+		<description>Rename SOURCE to DEST, or move SOURCE(s) to DIRECTORY.</description>
+		<flags>
+			<flag>
+				<flagname>-b</flagname>
+				<flagdescription>make a backup of each existing destination file</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-f</flagname>
+				<flagdescription>do not prompt before overwriting</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-i</flagname>
+				<flagdescription>prompt before overwrite</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-n</flagname>
+				<flagdescription>do not overwrite an existing file</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-u</flagname>
+				<flagdescription>move only when the SOURCE file is newer than the destination file or when the destination file is missing</flagdescription>
+			</flag>
+			<flag>
+				<flagname>-v</flagname>
+				<flagdescription>explain what is being done</flagdescription>
+			</flag>
+		</flags>
+		<exitstatuses>
+			<status>
+				<value>0</value>
+				<meaning>Success</meaning>
+			</status>
+			<status>
+				<value>>0</value>
+				<meaning>Error occurred</meaning>
+			</status>
+		</exitstatuses>
+		<examples>
+			<example>
+				<examplecommand>$ mv	-f foo bar</examplecommand>
+				<examplemeaning>Rename file foo to	bar, overwriting bar if	it already exists</examplemeaning>
+			</example>
+		</examples>
+		<author>Written by Mike Parker, David MacKenzie, and Jim Meyering.</author>
+	</page>
+	
+</catalog>

@@ -1,7 +1,7 @@
 README.txt
 
 Project 4: Brian McCarthy
-To run this project, run Main.jav as a Java application. From the home page you can navigate to any of the 4 man pages implemented.
+To run this project, run Main.java as a Java application. From the home page you can navigate to any of the 4 man pages implemented.
 The project is almost completely dynamic; adding any new man pages to the XML should be handled properly by the system.
 
 Moving to the next page in the Flags section, noticeable in the flags of "ls", is not fully implemented due to some 

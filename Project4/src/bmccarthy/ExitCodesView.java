@@ -69,6 +69,15 @@ public class ExitCodesView {
 		indexTitle.setBounds(10, 21, 155, 56);
 		index.add(indexTitle);
 		
+		JLabel homeLink = new JLabel("<html><u>Home</u></html>");
+		homeLink.setFont(new Font("Gotham Light", Font.PLAIN, 18));
+		homeLink.setForeground(Color.BLUE);
+		homeLink.setBounds(45, 100, 80, 30);
+		homeLink.addMouseListener(new HomeMouseAdapter(pages, frame));
+		homeLink.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		index.add(homeLink);
+		
+		
 		// Create the index with all names in the man page
 		JLabel pageShortcuts[] = new JLabel[pages.size()];
 		int i = 0;
@@ -76,7 +85,7 @@ public class ExitCodesView {
 			pageShortcuts[i] = new JLabel(entry.getKey());
 			
 			pageShortcuts[i].setFont(new Font("Gotham Light", Font.PLAIN, 18));
-			pageShortcuts[i].setBounds(45, 100 + 50 * i, 80, 30);
+			pageShortcuts[i].setBounds(45, 150 + 50 * i, 80, 30);
 			if(page.getName() == entry.getKey()){
 				// This is the page we're currently on, so indicate that
 				pageShortcuts[i].setForeground(Color.BLACK);
