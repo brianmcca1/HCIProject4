@@ -146,8 +146,9 @@ public class FlagsView {
 			mainPanel.add(pageNumLabel);
 			
 			if(pageNum < (page.getFlags().size() / 6)){
+				// NOTE: Currently unfinished implementation. Requires significant refactoring 
 				// We need a "Next" button unless this is the last page
-				JLabel nextPageLabel = new JLabel("<html><u>NEXT</html></u>");
+				JLabel nextPageLabel = new JLabel("<html><u>NEXT (unfinished)</html></u>");
 				nextPageLabel.setFont(new Font("Gotham Light", Font.PLAIN, 12));
 				nextPageLabel.setForeground(Color.BLUE);
 				nextPageLabel.setBounds(275, 495, 75, 60);

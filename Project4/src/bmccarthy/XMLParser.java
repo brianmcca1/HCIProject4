@@ -12,6 +12,7 @@ import java.util.Map;
 
 public class XMLParser {
 	
+	
 	public HashMap<String, ManPage> parseXML() throws ParserConfigurationException, SAXException, IOException{
 		
 		HashMap<String, ManPage> pages = new HashMap<String, ManPage>();
@@ -38,6 +39,7 @@ public class XMLParser {
 					String pageSynopsis = element.getElementsByTagName("synopsis").item(0).getTextContent();
 					String pageDescription = element.getElementsByTagName("description").item(0).getTextContent();
 					String pageBrief = element.getElementsByTagName("brief").item(0).getTextContent();
+					
 					
 					NodeList flagList = doc.getElementsByTagName("flag");					
 					
@@ -106,6 +108,7 @@ public class XMLParser {
 					String author = element.getElementsByTagName("author").item(0).getTextContent();
 					thePage = new ManPage(pageName, pageSynopsis, pageBrief, pageDescription, flagMap, author, exitMap, exampleMap);
 					pages.put(pageName, thePage);
+					
 
 				}
 				
